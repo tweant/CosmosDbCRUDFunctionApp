@@ -3,21 +3,21 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
 using System.Net;
 using System.Net.Http.Formatting;
 
-public static HttpResponseMessage Run(Customer customer, TraceWriter log, out object document)
+public static HttpResponseMessage Run(HttpResponseMessage req, string customerid, TraceWriter log, dynamic customer)
 {
 
-    customer.id = Guid.NewGuid().ToString();
-    document = customer;
-
-    log.Info($"Created customer with id: {customer.id}");
+    var castedCustomer = (Customer)customer;
+    log.Info($"Read customer with id: {customerid}");
 
     HttpResponseMessage response = new HttpResponseMessage();
 
-    response.Content = new ObjectContent<object>(new {id = customer.id}, new JsonMediaTypeFormatter(), "application/json");
+    response.Content = new ObjectContent<Customer>(castedCustomer, new JsonMediaTypeFormatter(), "application/json");
     response.StatusCode = HttpStatusCode.OK;
+
     return response;
 }
 

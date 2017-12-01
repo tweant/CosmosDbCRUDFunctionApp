@@ -3,10 +3,10 @@
     {
       "type": "httpTrigger",
       "direction": "in",
-      "name": "req",
-      "route": "customers/del/{customerid}",
+      "name": "input",
+      "route": "customers/update/{id}",
       "methods": [
-        "delete"
+        "post"
       ]
     },
     {
@@ -15,10 +15,11 @@
       "name": "$return"
     },
     {
-      "name": "client",
+      "name": "customer",
       "type": "documentDb",
       "databaseName": "%CosmosDbDatabaseName%",
       "collectionName": "%CosmosDbCollectionName%",
+      "id":"{id}",
       "createIfNotExists": true,
       "connection": "azure-functions-proxy-cosmos-db_DOCUMENTDB",
       "direction": "in"

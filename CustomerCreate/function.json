@@ -17,8 +17,8 @@
     {
       "name": "document",
       "type": "documentDb",
-      "databaseName": "BankDatabase",
-      "collectionName": "Customers",
+      "databaseName": "%CosmosDbDatabaseName%",
+      "collectionName": "%CosmosDbCollectionName%",
       "createIfNotExists": true,
       "connection": "azure-functions-proxy-cosmos-db_DOCUMENTDB",
       "direction": "out"
