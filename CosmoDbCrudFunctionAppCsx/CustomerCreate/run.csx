@@ -8,23 +8,15 @@ using System.Net.Http.Formatting;
 
 public static HttpResponseMessage Run(Customer customer, TraceWriter log, out object document)
 {
-    // if (string.IsNullOrEmpty(person.Name))
-    // {
-    //     return new HttpResponseMessage(HttpStatusCode.BadRequest)
-    //     {
-    //         Content = new StringContent("A non-empty Name must be specified.")
-    //     };
-    // };
 
-
-    customer.Id = Guid.NewGuid().ToString();
+    customer.id = Guid.NewGuid().ToString();
     document = customer;
 
-    log.Info($"Created customer");
+    log.Info($"Created customer with id: {customer.id}");
 
     HttpResponseMessage response = new HttpResponseMessage();
 
-    response.Content = new ObjectContent<object>(new {Id = customer.Id}, new JsonMediaTypeFormatter(), "application/json");
+    response.Content = new ObjectContent<object>(new {id = customer.id}, new JsonMediaTypeFormatter(), "application/json");
     response.StatusCode = HttpStatusCode.OK;
     return response;
 }
@@ -44,7 +36,7 @@ public class Customer
     public string Country { get; set; }
     public string Phone { get; set; }
     public string Fax { get; set; }
-    public string Id { get; set; }
+    public string id { get; set; }
 }
 
 public class CustomerId

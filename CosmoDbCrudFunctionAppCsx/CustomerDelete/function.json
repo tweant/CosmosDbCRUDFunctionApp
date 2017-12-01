@@ -3,11 +3,11 @@
     {
       "type": "httpTrigger",
       "direction": "in",
-      "name": "customer",
+      "name": "req",
+      "route": "customers/{customerid}",
       "methods": [
-        "put"
-      ],
-      "route":"customers/"
+        "delete"
+      ]
     },
     {
       "type": "http",
@@ -15,13 +15,13 @@
       "name": "$return"
     },
     {
-      "name": "document",
+      "name": "client",
       "type": "documentDb",
       "databaseName": "BankDatabase",
       "collectionName": "Customers",
       "createIfNotExists": true,
       "connection": "azure-functions-proxy-cosmos-db_DOCUMENTDB",
-      "direction": "out"
+      "direction": "in"
     }
   ],
   "disabled": false
