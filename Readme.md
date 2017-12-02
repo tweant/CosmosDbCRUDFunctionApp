@@ -50,3 +50,23 @@ This file should not be made public and should be included in `.gitignore` file.
 ## Notes
 
 All setting are automatically passed to application via `local.settings.json` file or via settings you created in Azure portal except **CustomerDelete** function when we cast to **DocumentClient** object which is necessary for deleting file. In **CreateDocumentUri** we manually enter database and collection name.
+
+## Software
+
+Recommended software:
+
+* Visual Studio Code for managing project and executing test
+* Postman (standalone version) for manual executing request
+* Microsoft Azure Storage Explorer for manipulating data in Cosmos DB
+
+## Links
+
+[Azure Functions developers guide](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference) - necessary informations for beginners on Azure Functions
+
+[Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings) - tutorial on triggers and bindings
+
+[Azure Cosmos DB bindings for Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-documentdb) - good tutorial on how to consume Azure Cosmos DB but lacks info about casting possibilities
+
+[host.json reference for Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) - host.json file reference
+
+[Work with Azure Functions Proxies](https://docs.microsoft.com/en-us/azure/azure-functions/functions-proxies) - reference for creating and managing proxies
