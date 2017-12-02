@@ -2,41 +2,37 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
 using System.Net;
 using System.Net.Http.Formatting;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
 
-public static HttpResponseMessage Run(Customer input, string customerid, TraceWriter log, dynamic customer)
-{
+public static HttpResponseMessage Run (Customer input, string id, TraceWriter log, dynamic customer) {
 
-    customer.CustomerId  =input.CustomerId ;
-    customer.CompanyName =    input.CompanyName ;
-    customer.ContactName =    input.ContactName ;
-    customer.ContactTitle=    input.ContactTitle ; 
-    customer.Address =    input.Address ;
-    customer.City =    input.City ;
-    customer.Region=    input.Region;
-    customer.PostalCode =    input.PostalCode ;
-    customer.Latitude =    input.Latitude ;
-    customer.Longitude =    input.Longitude ;
-    customer.Country=    input.Country;
-    customer.Phone =    input.Phone ;
-    customer.Fax =    input.Fax ;
-    
-    
+    customer.CustomerId = input.CustomerId;
+    customer.CompanyName = input.CompanyName;
+    customer.ContactName = input.ContactName;
+    customer.ContactTitle = input.ContactTitle;
+    customer.Address = input.Address;
+    customer.City = input.City;
+    customer.Region = input.Region;
+    customer.PostalCode = input.PostalCode;
+    customer.Latitude = input.Latitude;
+    customer.Longitude = input.Longitude;
+    customer.Country = input.Country;
+    customer.Phone = input.Phone;
+    customer.Fax = input.Fax;
 
-    log.Info($"Updated customer with id: {customerid}");
+    log.Info ($"Updated customer with id: {id}");
 
-    HttpResponseMessage response = new HttpResponseMessage();
+    HttpResponseMessage response = new HttpResponseMessage ();
 
     response.StatusCode = HttpStatusCode.OK;
 
     return response;
 }
 
-public class Customer
-{
+public class Customer {
     public string CustomerId { get; set; }
     public string CompanyName { get; set; }
     public string ContactName { get; set; }
